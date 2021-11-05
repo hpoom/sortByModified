@@ -15,11 +15,12 @@ print('Sorting folder '+mypath)
 # sort our files alphabetically
 files.sort()
 # subtract the number of files in seconds
-settime = datetime.now() - timedelta(minutes=len(files))
+# settime = datetime.now() - timedelta(minutes=len(files))
+settime = datetime.now()
 
 # printing the list using loop
 for currentfile in range(len(files)):
-    settime += timedelta(minutes=1)
+    settime -= timedelta(minutes=1)
     set_file_last_modified(mypath+'/'+files[currentfile], settime)
     print(files[currentfile])
 
