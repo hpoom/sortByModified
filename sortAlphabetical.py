@@ -7,16 +7,20 @@ def set_file_last_modified(filepath, dt):
     utime(filepath, (dtepoch, dtepoch))
 
 # get files from our folder
-mypath = './junk'
+#mypath = './junk'
+mypath = '/Volumes/PSP-1000/ISO/CAT_PSP Games'
 files = next(walk(mypath), (None, None, []))[2]  # [] if no file
 print('Sorting folder '+mypath)
 
 # sort our files alphabetically
 files.sort()
 # subtract the number of files in seconds
-settime = datetime.now() - timedelta(seconds=len(files))
+settime = datetime.now() - timedelta(minutes=len(files))
 
 # printing the list using loop
 for currentfile in range(len(files)):
-    set_file_last_modified(mypath+'/'+files[currentfile], settime + timedelta(seconds=1))
+    settime += timedelta(minutes=1)
+    set_file_last_modified(mypath+'/'+files[currentfile], settime)
     print(files[currentfile])
+
+# sudo dot_clean -m -v /Volumes/PSP-1000
